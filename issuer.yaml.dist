@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: appname
+  namespace: appnamespace
+spec:
+  acme:
+      email: {email here}
+      server: https://acme-staging-v02.api.letsencrypt.org/directory
+      #server: https://acme-v02.api.letsencrypt.org/directory
+      privateKeySecretRef:
+        name: issuer-secret
+      solvers:
+      - http01:
+          ingress:
+            name: appname

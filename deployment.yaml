@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appname
+  namespace: appnamespace
+  labels:
+    app: appname
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appname
+  template:
+    metadata:
+      labels:
+        app: appname
+    spec:
+      hostNetwork: false
+      imagePullSecrets:
+      - name: dockerhub-secret
+      containers:
+      - name: appname-php
+        image: registry.hub.docker.com/{replace it}
+      - name: appname-nginx
+        image: registry.hub.docker.com/{replace it}
+        ports:
+          - containerPort: 80
