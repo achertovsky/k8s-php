@@ -15,7 +15,9 @@ heads up in here. if you changed namespace - tweak command accordingly
 - (optional) do `docker login`
 - `kubectl create secret generic dockerhub-secret --from-file=.dockerconfigjson={yourPath}/.docker/config.json --type=kubernetes.io/dockerconfigjson --namespace=appnamespace`
 - `kubectl apply -f deployment.yaml`<br>
-make sure it works (get pods) - if not, something of previos was done wrong
+make sure it works (get pods) - if not, something of previos was done wrong. If error with image pull, cause no latest tag expected in your set up you may fix it by optional commands below
+- (optional) `kubectl -n appnamespace set image deployment/appname appname-nginx={repo}:{tag}
+- (optional) `kubectl -n appnamespace set image deployment/appname appname-php={repo}:{tag}
 - `kubectl apply -f service.yaml`
 - `cp issuer.yaml.dist issuer.yaml` and edit issuer.yaml by placing your mail in placeholder
 - `kubectl apply -f issuer.yaml`
@@ -24,7 +26,7 @@ make sure it works (get pods) - if not, something of previos was done wrong
 - `kubectl apply -f ingress.yaml`
 - After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its READY in true status. If not wait ~5 min, recheck and if still not refer to troubleshooting url below
 - If previous step is fine need to edit issuer.yaml by removing server and uncommenting #server. Reapply issuer and ingress.<br>
-Personally me did remove issuer and did remove ingress, apply them again and chck that cert is fine
+Personally me did remove issuer and did remove ingress, apply them again and check that cert is fine
 - Enjoy your service with https configured
 
 # knowledge sources
