@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/issuer: appname
     traefik.ingress.kubernetes.io/router.middlewares: appnamespace-appname@kubernetescrd
+    #traefik.ingress.kubernetes.io/router.middlewares: appnamespace-https-appname@kubernetescrd
   name: appname
   namespace: appnamespace
 spec:

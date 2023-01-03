@@ -22,6 +22,8 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - edit issuer.yaml by placing your mail in placeholder
 - `kubectl apply -f issuer.yaml`
 - `kubectl apply -f middleware.yaml`
+- (optional) enabling https redirect `kubectl apply -f https-middleware.yaml`
+- (optional) if applied https-middleware uncomment it in ingress.yaml before applying
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
 - `kubectl apply -f ingress.yaml`
 - After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its READY in true status. If not wait ~5 min, recheck and if still not refer to troubleshooting url below
