@@ -19,7 +19,7 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - (optional) `kubectl -n appnamespace set image deployment/appname appname-nginx={repo}:{tag}
 - (optional) `kubectl -n appnamespace set image deployment/appname appname-php={repo}:{tag}
 - `kubectl apply -f service.yaml`
-- `cp issuer.yaml.dist issuer.yaml` and edit issuer.yaml by placing your mail in placeholder
+- edit issuer.yaml by placing your mail in placeholder
 - `kubectl apply -f issuer.yaml`
 - `kubectl apply -f middleware.yaml`
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
