@@ -6,7 +6,7 @@ metadata:
   labels:
     app: appname
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: appname
@@ -21,6 +21,12 @@ spec:
       containers:
       - name: appname-php
         image: registry.hub.docker.com/{replace it}
+        #env:
+        #- name: ENV_VAR_NAME
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: appname-envs
+        #      key: secretkey
       - name: appname-nginx
         image: registry.hub.docker.com/{replace it}
         ports:

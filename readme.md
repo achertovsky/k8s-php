@@ -30,7 +30,12 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - If previous step is fine need to edit issuer.yaml by removing server and uncommenting #server. Reapply issuer and ingress.<br>
 Personally me did remove secrets by `kubectl -n appnamespace delete secret/ingress-secret` and `kubectl -n appnamespace delete secret/issuer-secret`
 - Enjoy your service with https configured
+- (optional) If you use secrets do `cp secrets.yaml.dist secrets.yaml` and fill data by any secrets you want to use, [according to manual](https://kubernetes.io/docs/concepts/configuration/secret/). For those who read diagonally (as i do):
+  - keep in mind that secrets have to be [base64-encoded strings](https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data).
+  -  To apply them [here's example how to](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases)
+- (optional) if you apply secrets you may apply (as i do) them as env variables in container. check `deployment.yaml`, uncomment and tweak according to own needs example in there
 
 # knowledge sources
 - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 - https://cert-manager.io/docs/troubleshooting/acme/
+- https://kubernetes.io/docs/concepts/configuration/secret/
