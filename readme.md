@@ -16,8 +16,8 @@ heads up in here. if you changed namespace - tweak command accordingly
 - `kubectl create secret generic dockerhub-secret --from-file=.dockerconfigjson={yourPath}/.docker/config.json --type=kubernetes.io/dockerconfigjson --namespace=appnamespace`
 - `kubectl apply -f deployment.yaml`<br>
 make sure it works (get pods) - if not, something of previos was done wrong. If error with image pull, cause no latest tag expected in your set up you may fix it by optional commands below
-- (optional) `kubectl -n appnamespace set image deployment/appname appname-nginx={repo}:{tag}
-- (optional) `kubectl -n appnamespace set image deployment/appname appname-php={repo}:{tag}
+- (optional) `kubectl -n appnamespace set image deployment/appname nginx={repo}:{tag}
+- (optional) `kubectl -n appnamespace set image deployment/appname php={repo}:{tag}
 - `kubectl apply -f service.yaml`
 - edit issuer.yaml by placing your mail in placeholder
 - `kubectl apply -f issuer.yaml`
