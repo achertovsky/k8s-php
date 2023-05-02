@@ -20,20 +20,22 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - (optional) `kubectl -n appnamespace set image deployment/appname php={repo}:{tag}
 - `kubectl apply -f service.yaml`
 - edit issuer.yaml by placing your mail in placeholder
-- `kubectl apply -f issuer.yaml`
-- `kubectl apply -f middleware.yaml`
-- (optional) enabling https redirect `kubectl apply -f https-middleware.yaml`
-- (optional) if applied https-middleware uncomment it in ingress.yaml before applying
+- (optional if https) `kubectl apply -f issuer.yaml`
+- (optional if https) `kubectl apply -f middleware.yaml`
+- (optional if https) if applied middleware uncomment tls part in ingress.yaml
+- (optional if https) enabling https redirect `kubectl apply -f https-middleware.yaml`
+- (optional if https) if applied https-middleware uncomment it in ingress.yaml
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
 - `kubectl apply -f ingress.yaml`
 - After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its READY in true status. If not wait ~5 min, recheck and if still not refer to troubleshooting url below
 - If previous step is fine need to edit issuer.yaml by removing server and uncommenting #server. Reapply issuer and ingress.<br>
-Personally me did remove secrets by `kubectl -n appnamespace delete secret/ingress-secret` and `kubectl -n appnamespace delete secret/issuer-secret`
+Personally I did remove secrets by `kubectl -n appnamespace delete secret/ingress-secret` and `kubectl -n appnamespace delete secret/issuer-secret`
 - Enjoy your service with https configured
 - (optional) If you use secrets do `cp secrets.yaml.dist secrets.yaml` and fill data by any secrets you want to use, [according to manual](https://kubernetes.io/docs/concepts/configuration/secret/). For those who read diagonally (as i do):
   - keep in mind that secrets have to be [base64-encoded strings](https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data).
   -  To apply them [here's example how to](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases)
-- (optional) if you apply secrets you may apply (as i do) them as env variables in container. check `deployment.yaml`, uncomment and tweak according to own needs example in there
+Do not forget to `kubectl apply -f secrets.yaml`
+- (optional) if you apply secrets you may apply (as i do) them as env variables in container. check `deployment.yaml`, uncomment and tweak according to own needs example in there, reapply deployment
 
 # knowledge sources
 - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
