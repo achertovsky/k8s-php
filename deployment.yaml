@@ -19,7 +19,7 @@ spec:
       imagePullSecrets:
       - name: dockerhub-secret
       containers:
-      - name: appname-php
+      - name: php
         image: registry.hub.docker.com/{replace it}
         #env:
         #- name: ENV_VAR_NAME
@@ -27,7 +27,7 @@ spec:
         #    secretKeyRef:
         #      name: appname-envs
         #      key: secretkey
-      - name: appname-nginx
+      - name: nginx
         image: registry.hub.docker.com/{replace it}
         ports:
           - containerPort: 80
