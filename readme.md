@@ -33,7 +33,7 @@ Personally I did remove secrets by `kubectl -n appnamespace delete secret/ingres
 - Enjoy your service with https configured
 - (optional) If you use secrets do `cp secrets.yaml.dist secrets.yaml` and fill data by any secrets you want to use, [according to manual](https://kubernetes.io/docs/concepts/configuration/secret/). For those who read diagonally (as i do):
   - keep in mind that secrets have to be [base64-encoded strings](https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data).
-  -  To apply them [here's example how to](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases)
+  -  To apply them [here's example how to](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases)<br />
 Do not forget to `kubectl apply -f secrets.yaml`
 - (optional) if you apply secrets you may apply (as i do) them as env variables in container. check `deployment.yaml`, uncomment and tweak according to own needs example in there, reapply deployment
 
