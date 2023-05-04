@@ -27,7 +27,7 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - (optional if https) if applied https-middleware uncomment it in ingress.yaml
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
 - `kubectl apply -f ingress.yaml`
-- After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its READY in true status. If not wait ~5 min, recheck and if still not refer to troubleshooting url below
+- After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its True under READY. If not wait ~5 min, recheck and if still not refer to troubleshooting url below
 - If previous step is fine need to edit issuer.yaml by removing server and uncommenting #server. Reapply issuer and ingress.<br>
 Personally I did remove secrets by `kubectl -n appnamespace delete secret/ingress-secret` and `kubectl -n appnamespace delete secret/issuer-secret`
 - Enjoy your service with https configured
