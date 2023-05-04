@@ -22,7 +22,7 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - edit issuer.yaml by placing your mail in placeholder
 - (optional if https) `kubectl apply -f issuer.yaml`
 - (optional if https) `kubectl apply -f middleware.yaml`
-- (optional if https) if applied middleware uncomment tls part in ingress.yaml
+- (optional if https) uncomment annotations and tls part in ingress.yaml
 - (optional if https) enabling https redirect `kubectl apply -f https-middleware.yaml`
 - (optional if https) if applied https-middleware uncomment it in ingress.yaml
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
