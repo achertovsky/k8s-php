@@ -21,10 +21,10 @@ make sure it works (get pods) - if not, something of previos was done wrong. If 
 - `kubectl apply -f service.yaml`
 - edit issuer.yaml by placing your mail in placeholder
 - (optional if https) `kubectl apply -f issuer.yaml`
-- (optional if https) `kubectl apply -f middleware.yaml`
-- (optional if https) uncomment annotations and tls part in ingress.yaml
-- (optional if https) enabling https redirect `kubectl apply -f https-middleware.yaml`
-- (optional if https) if applied https-middleware uncomment it in ingress.yaml
+- (optional if https) uncomment tls section in ingress.yaml
+- (optional if https) Enabling X-Forwarded-Proto: https custom header`kubectl apply -f middleware.yaml`
+- (optional if https) enabling force https redirect `kubectl apply -f https-middleware.yaml`
+- (optional if https) if applied any (or both) middleware uncomment desired it in ingress.yaml
 - edit ingress.yaml by replacing placeholders of domain in there to preferred one
 - `kubectl apply -f ingress.yaml`
 - After everything done need to assure that certificate is fine by `kubectl -n appnamespace get cert` to see its True under READY. If not wait ~5 min, recheck and if still not refer to troubleshooting url below

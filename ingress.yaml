@@ -4,8 +4,12 @@ metadata:
   #uncomment if https
   #annotations:
     #cert-manager.io/issuer: appname
+    # only https force
+    #traefik.ingress.kubernetes.io/router.middlewares: appnamespace-https-appname@kubernetescrd
+    # only X-Forwarded-Proto: https
     #traefik.ingress.kubernetes.io/router.middlewares: appnamespace-appname@kubernetescrd
-    ##traefik.ingress.kubernetes.io/router.middlewares: appnamespace-https-appname@kubernetescrd
+    # both
+    #traefik.ingress.kubernetes.io/router.middlewares: appnamespace-appname@kubernetescrd,appnamespace-https-appname@kubernetescrd
   name: appname
   namespace: appnamespace
 spec:
@@ -20,8 +24,7 @@ spec:
             name: appname
             port:
               number: 80
-  #uncomment if https
-  #tls:
-  #- hosts:
-  #  - {domain here}
-  #  secretName: ingress-secret
+  # tls:
+  #   - hosts:
+  #     - {domain here}
+  #     secretName: ingress-secret
