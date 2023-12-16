@@ -27,7 +27,15 @@ spec:
         #    secretKeyRef:
         #      name: appname-envs
         #      key: secretkey
+        resources:
+          limits:
+            memory: 80Mi
+            cpu: 0.08
       - name: nginx
         image: registry.hub.docker.com/{replace it}
         ports:
           - containerPort: 80
+        resources:
+          limits:
+            memory: 80Mi
+            cpu: 0.08

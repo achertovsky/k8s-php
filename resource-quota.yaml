@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: appname
+  namespace: appnamespace
+spec:
+  hard:
+    limits.cpu: 0.2
+    limits.memory: 200Mi
