@@ -4,6 +4,7 @@ metadata:
   name: https-appname
   namespace: appnamespace
 spec:
-  redirectScheme:
-    scheme: https
+  redirectRegex:
+    regex: "^http://(.*)"
+    replacement: "https://$1"
     permanent: true
